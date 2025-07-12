@@ -44,7 +44,7 @@ function App() {
       const results = await Promise.all(readFiles);
       setFileContents(results);
     } catch (err) {
-      alert("ファイルの読み込みに失敗しました");
+      alert(`ファイルの読み込みに失敗しました: ${err}`,);
     }
   };
   const [crop, setCrop] = useState(() => {
@@ -60,7 +60,9 @@ function App() {
         ) {
           return parsed;
         }
-      } catch {}
+      } catch {
+        return { top: 0, left: 0, right: 0, bottom: 0 };
+      }
     }
     return { top: 0, left: 0, right: 0, bottom: 0 };
   });
@@ -70,7 +72,7 @@ function App() {
     localStorage.setItem("matometetrim-crop", JSON.stringify(crop));
   }, [crop]);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseDown = () => {
     dragging.current = true;
     document.body.style.cursor = "col-resize";
   };

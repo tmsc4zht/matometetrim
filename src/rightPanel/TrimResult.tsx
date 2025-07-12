@@ -7,9 +7,15 @@ interface TrimResultProps {
 const TrimResult: React.FC<TrimResultProps> = ({ croppedUrls }) => (
   <section style={{ flex: 1, overflow: "auto" }}>
     <h3 style={{ margin: "0 0 8px 0" }}>トリミング結果</h3>
-    {croppedUrls.map((croppedUrl, i) =>
+    {croppedUrls.length === 0 && (
+      <div style={{ color: "#888" }}>
+        画像を選択し、トリミング値を入力してください
+      </div>
+    )}
+    {croppedUrls.map((croppedUrl) =>
       croppedUrl ? (
         <img
+          key={croppedUrl}
           src={croppedUrl}
           alt="cropped"
           style={{
@@ -19,11 +25,7 @@ const TrimResult: React.FC<TrimResultProps> = ({ croppedUrls }) => (
             borderRadius: 4,
           }}
         />
-      ) : (
-        <div style={{ color: "#888" }}>
-          画像を選択し、トリミング値を入力してください
-        </div>
-      ),
+      ) : (null),
     )}
   </section>
 );
