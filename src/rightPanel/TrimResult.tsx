@@ -25,7 +25,7 @@ const TrimResult: React.FC<TrimResultProps> = ({ croppedUrls }) => (
             borderRadius: 4,
           }}
         />
-      ) : (null),
+      ) : null,
     )}
   </section>
 );

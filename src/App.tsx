@@ -44,7 +44,7 @@ function App() {
       const results = await Promise.all(readFiles);
       setFileContents(results);
     } catch (err) {
-      alert(`ファイルの読み込みに失敗しました: ${err}`,);
+      alert(`ファイルの読み込みに失敗しました: ${err}`);
     }
   };
   const [crop, setCrop] = useState(() => {
